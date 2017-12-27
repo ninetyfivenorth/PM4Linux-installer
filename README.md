@@ -41,18 +41,18 @@ A full list of options can be retrieved by executing `./compile --help`.
 When compiled, the installer generates a shell script with data arranged in the
 following manner:
 
-  +-----------------------------------+
-  | <--minified contents of sfx.sh--> |
-  |-----[xz compressed tar data]------|
-  |bin/                               |
-  |    [...]                          |
-  |tools/                             |
-  |    [...]                          |
-  |files/                             |
-  |    [...]                          |
-  |userdocs/                          |
-  |    [...]                          |
-  +-----------------------------------+
+    +-----------------------------------+
+    | <--minified contents of sfx.sh--> |
+    |-----[xz compressed tar data]------|
+    |bin/                               |
+    |    [...]                          |
+    |tools/                             |
+    |    [...]                          |
+    |files/                             |
+    |    [...]                          |
+    |userdocs/                          |
+    |    [...]                          |
+    +-----------------------------------+
 
 ## Licensing information
 

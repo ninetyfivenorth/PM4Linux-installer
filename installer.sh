@@ -254,34 +254,8 @@ pminstall ()
     dlg_e "Another version of Pale Moon is already installed. Please remove the installed version and try again."
     return
   fi
-  while true; do
-    pm_ver="$(dlg_q "Press OK to download and install the latest version of Pale Moon." --entry --entry-text "Latest version" --button=gtk-ok:0 --button=gtk-cancel:1 --button="Archived versions...":2)"
-    errorlevel=$?
-    case $errorlevel in
-    0)
-      case "$pm_ver" in
-      Latest*)
-        pm_ver="$(get_latest_version)"
 
-        if ! is_version_valid "$pm_ver"; then
-          dlg_e "The latest version number could not be retrieved. Please check your network connection and try again."
-        else
-          break
-        fi
-        ;;
-      *)
-        dlg_e "Only the latest version can be installed with this script."
-        ;;
-      esac
-    ;;
-    1)
-      return
-      ;;   
-    2)
-      xdg-open https://www.palemoon.org/archived.shtml
-      ;;
-    esac
-  done
+  pm_ver="$(get_latest_version)"
 
   if archive_download "$pm_ver"; then
     pminstall_main >& 1 | stdoutparser | dlg_pw "Installing Pale Moon..." applications-system
