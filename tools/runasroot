@@ -16,14 +16,14 @@ dlg_e ()
 # Extract the contents of a variable *safely*.
 # Usage: var_extract [extraction_mode] [variable_name]
 # where [extraction_mode] is one of:
-# no_check_existance: Create "export variable_name=[...]" statement.
-# check_existance: Create above with '[[ -z $variable_name ]] &&' prepended.
+# no_check_existence: Create "export variable_name=[...]" statement.
+# check_existence: Create above with '[[ -z $variable_name ]] &&' prepended.
 var_extract () {
   case "$1" in
-  no_check_existance)
+  no_check_existence)
     declare -x | grep -E "^declare -x $2=" | sed -r 's/^declare -x/export/'
     ;;
-  check_existance)
+  check_existence)
     declare -x | grep -E "^declare -x $2=" | sed -r 's/^declare -x/\[\[ -z $'"$2"' ]] \&\& export/'
     ;;
   esac
@@ -34,12 +34,12 @@ create_tmp_script ()
 {
   tmp_script=$(mktemp /tmp/runasroot.XXXXXXXXX)
   echo '#!/bin/bash' > $tmp_script
-  var_extract no_check_existance DISPLAY >> $tmp_script
-  var_extract check_existance XAUTHORITY >> $tmp_script
-  var_extract no_check_existance http_proxy >> $tmp_script
-  var_extract no_check_existance https_proxy >> $tmp_script
-  var_extract no_check_existance ftp_proxy >> $tmp_script
-  var_extract no_check_existance no_proxy >> $tmp_script
+  var_extract no_check_existence DISPLAY >> $tmp_script
+  var_extract check_existence XAUTHORITY >> $tmp_script
+  var_extract no_check_existence http_proxy >> $tmp_script
+  var_extract no_check_existence https_proxy >> $tmp_script
+  var_extract no_check_existence ftp_proxy >> $tmp_script
+  var_extract no_check_existence no_proxy >> $tmp_script
   echo 'exec "$@"' >> $tmp_script
   chmod +x $tmp_script
 }
