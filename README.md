@@ -2,12 +2,16 @@
 
 ---
 
+# Important
+
+The Pale Moon for Linux installer is no longer maintained. Beginning with Pale Moon v28.0.0 all updates are handled by the internal updater, which is a __*far*__ superior process than using this script.
+
+---
+
 The Pale Moon for Linux installer (also referred to as pminstaller) is a script that is meant
 to ease installation of the mainline Pale Moon binaries on Linux, made available at https://linux.palemoon.org.
 
-You can find more information about using pminstaller here: https://linux.palemoon.org/download/installer/
-
-You can find Release notes for each release of pminstaller here: https://linux.palemoon.org/installer-release-notes/
+You can find Release notes for old releases of pminstaller here: https://linux.palemoon.org/installer-release-notes/
 
 ## Technical details
 
